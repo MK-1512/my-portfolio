@@ -13,6 +13,42 @@ const socialLinks = {
   github: "https://github.com/MK-1512",
 };
 
+const BackgroundRipples = () => {
+  return (
+    <div className="absolute inset-0 -z-10 overflow-hidden">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full border border-gray-200"
+          initial={{
+            opacity: 0,
+            scale: 0,
+            x: '50%',
+            y: '50%',
+          }}
+          animate={{
+            opacity: [0, 0.3, 0],
+            scale: [0, 1],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            delay: i * 0.8,
+            ease: 'easeOut',
+          }}
+          style={{
+            width: `${(i + 1) * 200}px`,
+            height: `${(i + 1) * 200}px`,
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 export default function Contact() {
   const ref = useRef(null);
   const formRef = useRef(null);
@@ -38,28 +74,19 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
-
-    // The keys here MUST match the variables in your EmailJS template
     const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         website: formData.website,
         message: formData.message,
     };
-
     try {
-      // Use your actual IDs and Key from your EmailJS account
       await emailjs.send(
-        "service_bp2bf6c",     // Replace with your Service ID
-        "template_oys42jg",    // Replace with your Template ID
-        templateParams,
-        "9dwitHbQstcQB5BAA"      // Replace with your Public Key (User ID)
+        "service_bp2bf6c", "template_oys42jg", templateParams, "9dwitHbQstcQB5BAA"
       );
-
       setSubmitStatus('success');
-      formRef.current.reset(); // Reset the form fields
-      setFormData({ name: '', email: '', website: '', message: '' }); // Reset the state
-      
+      formRef.current.reset();
+      setFormData({ name: '', email: '', website: '', message: '' });
     } catch (error) {
       console.error('Error sending email:', error);
       setSubmitStatus('error');
@@ -74,9 +101,11 @@ export default function Contact() {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.8 }}
-      className='lg:my-16 lg:px-28 my-8 px-5'
+      className='lg:my-16 lg:px-28 my-8 px-5 relative overflow-hidden py-10'
       id='contact'
     >
+      <BackgroundRipples />
+      
       <motion.h2
         initial={{ y: -50, opacity: 0 }}
         animate={isInView ? { y: 0, opacity: 1 } : { opacity: 0 }}
@@ -93,7 +122,8 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className='lg:w-[40%]'
         >
-          <form ref={formRef} onSubmit={handleSubmit} className='w-full space-y-3 lg:space-y-5'>
+          {/* ... (rest of your existing code for the form is unchanged) ... */}
+           <form ref={formRef} onSubmit={handleSubmit} className='w-full space-y-3 lg:space-y-5'>
             <input 
               className='border-2 px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full' 
               type="text" 
@@ -214,7 +244,8 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className='lg:w-1/2'
         >
-          <div className='font-extrabold text-2xl lg:text-5xl mt-5 lg:mt-0 space-y-1 lg:space-y-3'>
+          {/* ... (rest of your existing code for the contact text is unchanged) ... */}
+           <div className='font-extrabold text-2xl lg:text-5xl mt-5 lg:mt-0 space-y-1 lg:space-y-3'>
             <h2>Let's <span className='text-white' style={{ WebkitTextStroke: '1px black' }}>talk</span> for</h2>
             <h2>Something special</h2>
           </div>

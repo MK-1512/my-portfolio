@@ -169,15 +169,15 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Image Column (hidden on small screens) */}
+        {/* Image Column (Now visible on small screens) */}
         <motion.div
-          className="w-full lg:w-1/2 hidden lg:flex"
+          className="w-full lg:w-1/2 flex justify-center mt-8 lg:mt-0"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
           <motion.img
-            className="h-full w-full object-contain"
+            className="h-64 sm:h-80 lg:h-full w-full object-contain"
             src="/assets/hero-vector.png"
             alt="Modern Developer Illustration"
             animate={{

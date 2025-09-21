@@ -1,9 +1,46 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const BackgroundCircles = () => {
+  return (
+    <div className="absolute inset-0 -z-10 overflow-hidden">
+      {Array.from({ length: 10 }).map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute bg-gray-200/50 rounded-full"
+          initial={{
+            x: `${Math.random() * 100}%`,
+            y: `${Math.random() * 100}%`,
+            scale: 0,
+            opacity: 0,
+          }}
+          animate={{
+            x: `${Math.random() * 100}%`,
+            y: `${Math.random() * 100}%`,
+            scale: [0, Math.random() * 0.5 + 0.5, 0],
+            opacity: [0, 0.5, 0],
+          }}
+          transition={{
+            duration: Math.random() * 10 + 10,
+            repeat: Infinity,
+            ease: "linear",
+            delay: Math.random() * 5,
+          }}
+          style={{
+            width: `${Math.random() * 150 + 50}px`,
+            height: `${Math.random() * 150 + 50}px`,
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 export default function About() {
   return (
-    <div className="px-5 lg:px-28 flex justify-between flex-col lg:flex-row items-center gap-8 lg:gap-16" id="about">
+    <div className="relative mt-16 lg:mt-24 px-5 lg:px-28 flex justify-between flex-col-reverse lg:flex-row items-center gap-8 lg:gap-16" id="about">
+      <BackgroundCircles />
+      
       <motion.div
         className="lg:w-1/2 relative"
         initial={{ opacity: 0, x: -50 }}
@@ -11,7 +48,8 @@ export default function About() {
         transition={{ type: "spring", stiffness: 80, damping: 10 }}
         viewport={{ once: true }}
       >
-        {/* Main Image with subtle bob animation */}
+        {/* ... (rest of your existing code for the image and its animations is unchanged) ... */}
+         {/* Main Image with subtle bob animation */}
         <motion.img 
           src="/assets/about-me.png" 
           alt="About Me Developer Illustration"
@@ -132,6 +170,7 @@ export default function About() {
         transition={{ type: "spring", stiffness: 80, damping: 10, delay: 0.2 }}
         viewport={{ once: true }}
       >
+        {/* ... (rest of your existing code for the text is unchanged) ... */}
         <h2 className="lg:text-4xl text-2xl mt-4 lg:mt-0">
           About <span className="font-extrabold">Me</span>
         </h2>

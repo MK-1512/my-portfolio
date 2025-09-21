@@ -5,20 +5,33 @@ import { motion } from 'framer-motion';
 const projects = [
   {
     id: 1,
-    title: "Crypto Screener Application",
-    description: "A powerful tool for tracking and analyzing cryptocurrency trends in real-time.",
+    title: "Gadget Galaxy",
+    description: "An e-commerce platform for the latest electronic gadgets, featuring a modern UI and a seamless shopping experience.",
     image: "/assets/project1.png",
-    link: "#"
+    link: "https://gadget-galaxy.vercel.app/"
   },
   {
     id: 2,
-    title: "Stock Market Dashboard",
-    description: "An interactive dashboard to monitor stock prices and market trends efficiently.",
-    image: "/assets/project1.png",
+    title: "Chatterbox Application",
+    description: "A real-time chat application built with modern web technologies, allowing users to connect and communicate instantly.",
+    image: "/assets/project2.png",
+    link: "https://chatterbox-frontend-mk.onrender.com/login"
+  },
+  {
+    id: 3,
+    title: "Patient Monitoring System",
+    description: "A system that utilizes computer vision for patient activity recognition and hand gesture analysis to assist healthcare professionals.",
+    image: "/assets/project3.png",
+    link: "https://github.com/MK-1512/Patient-Care"
+  },
+  {
+    id: 4,
+    title: "Personal Portfolio Website",
+    description: "The very website you are browsing now. Designed and built to showcase my skills, projects, and professional experience.",
+    image: "/assets/project4.png",
     link: "#"
   }
 ];
-
 export default function Projects() {
   return (
     <div className="bg-black px-5 lg:px-28 py-8 my-8 lg:py-16 lg:my-16" id="projects">

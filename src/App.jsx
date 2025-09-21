@@ -14,11 +14,11 @@ export default function App() {
       <CustomCursor/>
       <Navbar />
       <Home />
-      <Skills />
+      {/* I have swapped the order of About and Skills here */}
       <About />
+      <Skills />
       <Projects />
       <Contact />
-
       <Footer />
     </div>
   )

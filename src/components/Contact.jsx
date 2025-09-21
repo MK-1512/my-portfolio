@@ -1,14 +1,72 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsGithub } from 'react-icons/bs';
-import { IoLogoLinkedin, IoLogoTwitter } from 'react-icons/io5';
+import { IoLogoLinkedin } from 'react-icons/io5';
 import { IoMdMail } from "react-icons/io";
 import { FaPhone } from "react-icons/fa6";
+import emailjs from '@emailjs/browser';
+
+const socialLinks = {
+  gmail: "mailto:mktech1512@gmail.com",
+  linkedin: "https://www.linkedin.com/in/mk2003/",
+  github: "https://github.com/MK-1512",
+};
 
 export default function Contact() {
   const ref = useRef(null);
+  const formRef = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    website: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    // The keys here MUST match the variables in your EmailJS template
+    const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        website: formData.website,
+        message: formData.message,
+    };
+
+    try {
+      // Use your actual IDs and Key from your EmailJS account
+      await emailjs.send(
+        "service_bp2bf6c",     // Replace with your Service ID
+        "template_oys42jg",    // Replace with your Template ID
+        templateParams,
+        "9dwitHbQstcQB5BAA"      // Replace with your Public Key (User ID)
+      );
+
+      setSubmitStatus('success');
+      formRef.current.reset(); // Reset the form fields
+      setFormData({ name: '', email: '', website: '', message: '' }); // Reset the state
+      
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <motion.div
@@ -35,11 +93,65 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className='lg:w-[40%]'
         >
-          <form className='w-full space-y-3 lg:space-y-5'>
-            <input className='border-2 px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full' type="text" placeholder='Your name' required />
-            <input className='border-2 px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full' type="email" placeholder='Email' required />
-            <input className='border-2 px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full' type="text" placeholder='Your website (If exists)' />
-            <textarea className='resize-none border-2 px-5 py-3 h-32 border-black placeholder:text-[#71717A]  rounded text-sm w-full' placeholder='How can I help?*'></textarea>
+          <form ref={formRef} onSubmit={handleSubmit} className='w-full space-y-3 lg:space-y-5'>
+            <input 
+              className='border-2 px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full' 
+              type="text" 
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              placeholder='Your name' 
+              required 
+            />
+            
+            <input 
+              className='border-2 px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full' 
+              type="email" 
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder='Email' 
+              required 
+            />
+            
+            <input 
+              className='border-2 px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full' 
+              type="text" 
+              name="website"
+              value={formData.website}
+              onChange={handleInputChange}
+              placeholder='Your website (If exists)' 
+            />
+            
+            <textarea 
+              className='resize-none border-2 px-5 py-3 h-32 border-black placeholder:text-[#71717A] rounded text-sm w-full' 
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              placeholder='How can I help?*'
+              required
+            />
+
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-green-600 text-sm font-medium bg-green-50 p-3 rounded border border-green-200"
+              >
+                Message sent successfully! I'll get back to you soon.
+              </motion.div>
+            )}
+            
+            {submitStatus === 'error' && (
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-red-600 text-sm font-medium bg-red-50 p-3 rounded border border-red-200"
+              >
+                Failed to send message. Please try again or contact me directly.
+              </motion.div>
+            )}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -48,25 +160,49 @@ export default function Contact() {
               className='flex justify-between gap-3 lg:gap-5 flex-col lg:flex-row'
             >
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
                 type='submit'
-                className='bg-black justify-center w-fit lg:w-auto lg:flex-1 hover:shadow-lg text-white px-3 py-2 rounded flex items-center gap-x-3 font-medium'
+                disabled={isSubmitting}
+                className={`justify-center w-fit lg:w-auto lg:flex-1 text-white px-3 py-2 rounded flex items-center gap-x-3 font-medium transition-all ${
+                  isSubmitting 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : 'bg-black hover:shadow-lg'
+                }`}
               >
-                Get In Touch
+                {isSubmitting ? 'Sending...' : 'Get In Touch'}
               </motion.button>
 
               <div className='flex items-center gap-x-2 lg:gap-x-5'>
-                {[BiLogoGmail, IoLogoLinkedin, IoLogoTwitter, BsGithub].map((Icon, index) => (
-                  <motion.a
-                    key={index}
-                    href="#"
-                    className="bg-white p-2 lg:p-3 rounded border-2 border-black"
-                    whileHover={{ scale: 1.1, backgroundColor: "#000", color: "#fff" }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <Icon className="w-4 h-4 lg:w-5 lg:h-5" />
-                  </motion.a>
-                ))}
+                <motion.a
+                  href={socialLinks.gmail}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white p-2 lg:p-3 rounded border-2 border-black"
+                  whileHover={{ scale: 1.1, backgroundColor: "#000", color: "#fff" }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <BiLogoGmail className="w-4 h-4 lg:w-5 lg:h-5" />
+                </motion.a>
+                <motion.a
+                  href={socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white p-2 lg:p-3 rounded border-2 border-black"
+                  whileHover={{ scale: 1.1, backgroundColor: "#000", color: "#fff" }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <IoLogoLinkedin className="w-4 h-4 lg:w-5 lg:h-5" />
+                </motion.a>
+                <motion.a
+                  href={socialLinks.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white p-2 lg:p-3 rounded border-2 border-black"
+                  whileHover={{ scale: 1.1, backgroundColor: "#000", color: "#fff" }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <BsGithub className="w-4 h-4 lg:w-5 lg:h-5" />
+                </motion.a>
               </div>
             </motion.div>
           </form>
@@ -89,23 +225,23 @@ export default function Contact() {
             <motion.a
               whileHover={{ x: 5 }}
               className='flex items-center gap-2 group'
-              href="mailto:Youremail@gmail.com"
+              href="mailto:mktech1512@gmail.com"
             >
               <span className='border-2 transition-all border-transparent group-hover:border-black rounded-full p-1'>
                 <IoMdMail className="w-4 h-4 lg:w-5 lg:h-5" />
               </span>
-              Youremail@gmail.com
+              mktech1512@gmail.com
             </motion.a>
 
             <motion.a
               whileHover={{ x: 5 }}
               className='flex items-center gap-2 group'
-              href="tele:1234567890"
+              href="tel:1234567890"
             >
               <span className='border-2 transition-all border-transparent group-hover:border-black rounded-full p-[5px]'>
                 <FaPhone className="w-3 h-3 lg:w-4 lg:h-4" />
               </span>
-              1234567890
+              +91 6374218503
             </motion.a>
           </div>
         </motion.div>

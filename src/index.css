@@ -1,5 +1,26 @@
+/* Update the .tagcloud--item style in this file */
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.tagcloud {
+  font-size: 18px;
+  font-weight: 600;
+  color: black;
+}
+
+.tagcloud--item {
+  display: inline-block; /* Fix for the partial hover issue */
+  padding: 8px 16px;
+  border-radius: 9999px;
+  background: white;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.tagcloud--item:hover {
+  background: black;
+  color: white;
+}

@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TbDownload } from "react-icons/tb";
@@ -36,7 +35,6 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto flex justify-between items-center px-5 lg:px-28">
-        {/* Logo aligned with Home text (same padding rule) */}
         <div
           onClick={() => scrollToSection("home")}
           className="text-xl font-bold cursor-pointer flex items-center pl-1 lg:pl-0"
@@ -45,7 +43,6 @@ export default function Navbar() {
           <span>Portfolio</span>
         </div>
 
-        {/* Desktop Nav Links */}
         <ul
           className="hidden lg:flex items-center justify-between w-1/2 max-w-md font-semibold"
           onMouseLeave={() => setHoveredLink(null)}
@@ -75,9 +72,10 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Resume Button */}
+        {/* Updated Desktop Resume Button */}
         <motion.a
-          href="#"
+          href="/Mukesh_Kumar_Resume.pdf" // Make sure this matches your file name
+          download="Mukesh_Kumar_Resume.pdf" // The 'download' attribute makes it downloadable
           className="hidden lg:flex items-center gap-x-2 px-5 py-2 border-2 border-black font-semibold text-black bg-transparent hover:bg-black hover:text-white transition-colors duration-300 rounded-lg"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -85,7 +83,6 @@ export default function Navbar() {
           Resume <TbDownload />
         </motion.a>
 
-        {/* Mobile Menu Button */}
         <motion.button
           className="lg:hidden text-2xl"
           onClick={() => setIsOpen(!isOpen)}
@@ -95,7 +92,6 @@ export default function Navbar() {
         </motion.button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -118,8 +114,10 @@ export default function Navbar() {
                 </motion.li>
               ))}
 
+              {/* Updated Mobile Resume Button */}
               <motion.a
-                href="#"
+                href="/Mukesh_Kumar_Resume.pdf" // Make sure this matches your file name
+                download="Mukesh_Kumar_Resume.pdf" // The 'download' attribute makes it downloadable
                 className="flex items-center gap-x-3 px-6 py-3 mt-4 border-2 border-black font-semibold text-black bg-white hover:bg-black hover:text-white transition-colors duration-300 rounded-lg"
                 whileHover={{ scale: 1.05 }}
               >

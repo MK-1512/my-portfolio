@@ -25,6 +25,15 @@ const skills = [
 const experiences = [
   {
     id: 1,
+    company: "RR IT Solutions",
+    role: "Frontend Project Trainee",
+    period: "Present",
+    description:
+      "Developed reusable and responsive UI components using React.js, JavaScript, HTML, and CSS. Implemented client-side routing and state management using React Hooks. Integrated API responses for dynamic content rendering and collaborated in code reviews to improve UI performance.",
+    logo: "/assets/rr-it-logo.png", // NOTE: This is a placeholder path
+  },
+  {
+    id: 2,
     company: "INVENTROM",
     role: "Frontend Developer Intern",
     period: "May 2024 - July 2024",
@@ -33,7 +42,7 @@ const experiences = [
     logo: "/assets/inventrom-logo.png",
   },
   {
-    id: 2,
+    id: 3,
     company: "SmartKnower",
     role: "Web Development Intern",
     period: "Apr 2022 - May 2022",

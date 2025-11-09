@@ -17,15 +17,23 @@ const projects = [
     image: "/assets/project2.png",
     link: "https://chatterbox-frontend-mk.onrender.com/login"
   },
-  {
+   {
     id: 3,
+    title: "Amrapali Clone",
+    description: "A clone of the Amrapali website, showcasing frontend skills in replicating a modern e-commerce UI.", // NOTE: This is a placeholder
+    image: "/assets/project-amrapali.png", // NOTE: This is a placeholder path
+    link: "https://github.com/MK-1512/amrapali-clone" // NOTE: This is a placeholder link
+  },
+  {
+    id: 4,
     title: "Patient Monitoring System",
     description: "A system that utilizes computer vision for patient activity recognition and hand gesture analysis to assist healthcare professionals.",
     image: "/assets/project3.png",
     link: "https://github.com/MK-1512/Patient-Care"
   },
+ 
   {
-    id: 4,
+    id: 5,
     title: "Personal Portfolio Website",
     description: "The very website you are browsing now. Designed and built to showcase my skills, projects, and professional experience.",
     image: "/assets/project4.png",

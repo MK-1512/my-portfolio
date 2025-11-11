@@ -74,8 +74,8 @@ export default function Navbar() {
 
         {/* Updated Desktop Resume Button */}
         <motion.a
-          href="/Mukesh_Kumar_Resume.pdf" // Make sure this matches your file name
-          download="Mukesh_Kumar_Resume.pdf" // The 'download' attribute makes it downloadable
+          href="public/assets/MK-FRONTEND.pdf" // Make sure this matches your file name
+          download="MK-FRONTEND.pdf" // The 'download' attribute makes it downloadable
           className="hidden lg:flex items-center gap-x-2 px-5 py-2 border-2 border-black font-semibold text-black bg-transparent hover:bg-black hover:text-white transition-colors duration-300 rounded-lg"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

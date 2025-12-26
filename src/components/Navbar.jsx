@@ -72,10 +72,9 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Updated Desktop Resume Button */}
         <motion.a
-          href="/assets/MK-FRONTEND.pdf" // CHANGED: Removed 'public' from the path
-          download="MK-FRONTEND.pdf" // The 'download' attribute makes it downloadable
+          href="/assets/MK-FRONTEND.pdf"
+          download="MK-FRONTEND.pdf"
           className="hidden lg:flex items-center gap-x-2 px-5 py-2 border-2 border-black font-semibold text-black bg-transparent hover:bg-black hover:text-white transition-colors duration-300 rounded-lg"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -114,10 +113,9 @@ export default function Navbar() {
                 </motion.li>
               ))}
 
-              {/* Updated Mobile Resume Button */}
               <motion.a
-                href="/assets/MK-FRONTEND.pdf" // CHANGED: Matched the correct file path
-                download="MK-FRONTEND.pdf" // CHANGED: Matched the correct file name
+                href="/assets/MK-FRONTEND.pdf"
+                download="MK-FRONTEND.pdf"
                 className="flex items-center gap-x-3 px-6 py-3 mt-4 border-2 border-black font-semibold text-black bg-white hover:bg-black hover:text-white transition-colors duration-300 rounded-lg"
                 whileHover={{ scale: 1.05 }}
               >

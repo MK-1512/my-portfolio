@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function CustomCursor() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const cursorSize = 32; // A single, consistent size for the cursor
+  const cursorSize = 32;
 
   useEffect(() => {
     const handleMouseMove = (e) => {

@@ -48,8 +48,6 @@ export default function About() {
         transition={{ type: "spring", stiffness: 80, damping: 10 }}
         viewport={{ once: true }}
       >
-        {/* ... (rest of your existing code for the image and its animations is unchanged) ... */}
-         {/* Main Image with subtle bob animation */}
         <motion.img 
           src="/assets/about-me.png" 
           alt="About Me Developer Illustration"
@@ -65,7 +63,6 @@ export default function About() {
           }}
         />
         
-        {/* Floating Code Particles */}
         <motion.div
           className="absolute top-16 left-8 text-green-500 text-xl font-mono"
           animate={{
@@ -117,7 +114,6 @@ export default function About() {
           return
         </motion.div>
         
-        {/* Typing indicator - simulates active coding */}
         <motion.div
           className="absolute bottom-1/3 right-1/3 flex items-center gap-1"
           animate={{
@@ -148,7 +144,6 @@ export default function About() {
           ></motion.div>
         </motion.div>
         
-        {/* Glowing screen effect */}
         <motion.div
           className="absolute bottom-1/4 right-1/4 w-16 h-10 bg-blue-400 opacity-20 blur-sm rounded"
           animate={{
@@ -170,12 +165,10 @@ export default function About() {
         transition={{ type: "spring", stiffness: 80, damping: 10, delay: 0.2 }}
         viewport={{ once: true }}
       >
-        {/* ... (rest of your existing code for the text is unchanged) ... */}
         <h2 className="lg:text-4xl text-2xl mt-4 lg:mt-0">
           About <span className="font-extrabold">Me</span>
         </h2>
 
-        {/* The paragraphs below now have improved styling */}
         <p className="text-gray-600 text-justify text-lg leading-relaxed mt-5 lg:mt-10">
           <span className="text-5xl font-bold float-left mr-3">A</span>s a Full-Stack Developer, I build the bridges between user experience and technology. I enjoy creating seamless digital experiences with frontend tools like <strong>React</strong>, ensuring every interaction is intuitive. At the same time, I architect the powerful backend systems using <strong>Python</strong> and <strong>SQL</strong> that make it all possible.
         </p>

@@ -122,7 +122,6 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className='lg:w-[40%]'
         >
-          {/* ... (rest of your existing code for the form is unchanged) ... */}
            <form ref={formRef} onSubmit={handleSubmit} className='w-full space-y-3 lg:space-y-5'>
             <input 
               className='border-2 px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full' 
@@ -162,7 +161,6 @@ export default function Contact() {
               required
             />
 
-            {/* Status Messages */}
             {submitStatus === 'success' && (
               <motion.div 
                 initial={{ opacity: 0, y: -10 }}

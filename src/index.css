@@ -1,4 +1,3 @@
-/* Update the .tagcloud--item style in this file */
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
 
 @tailwind base;
@@ -12,7 +11,7 @@
 }
 
 .tagcloud--item {
-  display: inline-block; /* Fix for the partial hover issue */
+  display: inline-block;
   padding: 8px 16px;
   border-radius: 9999px;
   background: white;

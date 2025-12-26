@@ -1,4 +1,3 @@
-// src/components/Home.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { IoLogoLinkedin } from "react-icons/io5";
@@ -15,14 +14,12 @@ export default function Home() {
   return (
     <div className="mt-20" id="home">
       <div className="flex flex-col lg:flex-row justify-between items-start gap-8 min-h-[calc(100vh-8rem)] px-5 lg:px-28">
-        {/* Text Column */}
         <motion.div
           className="w-full lg:w-1/2 lg:mt-16"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
-          {/* Same left padding rule as Navbar logo so they align */}
           <div className="pl-1 lg:pl-0">
             <motion.div
               className="text-4xl lg:text-4xl xl:text-5xl flex flex-col gap-2 lg:gap-4"
@@ -98,7 +95,6 @@ export default function Home() {
               environment.
             </motion.p>
 
-            {/* Social Icons */}
             <motion.div
               className="flex items-center gap-x-6 mt-10 lg:mt-14"
               initial={{ opacity: 0, y: 10 }}
@@ -139,7 +135,6 @@ export default function Home() {
               </motion.a>
             </motion.div>
 
-            {/* Scroll Down */}
             <motion.div
               className="flex justify-center mt-16 lg:mt-20"
               initial={{ opacity: 0, y: 10 }}
@@ -169,7 +164,6 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Image Column (Now visible on small screens) */}
         <motion.div
           className="w-full lg:w-1/2 flex justify-center mt-8 lg:mt-0"
           initial={{ opacity: 0, x: 50 }}

@@ -14,7 +14,6 @@ export default function App() {
       <CustomCursor/>
       <Navbar />
       <Home />
-      {/* I have swapped the order of About and Skills here */}
       <About />
       <Skills />
       <Projects />

@@ -20,9 +20,9 @@ const projects = [
    {
     id: 3,
     title: "Amrapali Clone",
-    description: "A clone of the Amrapali website, showcasing frontend skills in replicating a modern e-commerce UI.", // NOTE: This is a placeholder
-    image: "/assets/project-amrapali.png", // NOTE: This is a placeholder path
-    link: "https://github.com/MK-1512/amrapali-clone" // NOTE: This is a placeholder link
+    description: "A clone of the Amrapali website, showcasing frontend skills in replicating a modern e-commerce UI.",
+    image: "/assets/project-amrapali.png",
+    link: "https://github.com/MK-1512/amrapali-clone"
   },
   {
     id: 4,

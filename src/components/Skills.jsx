@@ -10,7 +10,6 @@ import {
   FaDatabase,
 } from "react-icons/fa";
 
-// Data for the skill icons grid with colors
 const skills = [
   { id: 1, name: "HTML", icon: <FaHtml5 size={50} />, color: "#e34c26", bgColor: "#fff5f5" },
   { id: 2, name: "CSS", icon: <FaCss3Alt size={50} />, color: "#1572b6", bgColor: "#f0f9ff" },
@@ -21,7 +20,6 @@ const skills = [
   { id: 7, name: "SQL", icon: <FaDatabase size={50} />, color: "#336791", bgColor: "#f1f5f9" },
 ];
 
-// Data for your experience section
 const experiences = [
   {
     id: 1,
@@ -30,7 +28,7 @@ const experiences = [
     period: "Present",
     description:
       "Developed reusable and responsive UI components using React.js, JavaScript, HTML, and CSS. Implemented client-side routing and state management using React Hooks. Integrated API responses for dynamic content rendering and collaborated in code reviews to improve UI performance.",
-    logo: "/assets/rr-it-logo.png", // NOTE: This is a placeholder path
+    logo: "/assets/rr-it-logo.png",
   },
   {
     id: 2,
@@ -56,7 +54,6 @@ export default function Skills() {
   const [hoveredSkill, setHoveredSkill] = useState(null);
   const [activePhase, setActivePhase] = useState(0);
   
-  // Skills data for the Tech Universe Animation
   const skillsData = [
     { name: "HTML", pos: { x: 20, y: 30 }, connections: [1, 2, 3] },
     { name: "CSS", pos: { x: 40, y: 20 }, connections: [0, 2, 3] },
@@ -87,9 +84,7 @@ export default function Skills() {
           My <span className="font-extrabold">Skills</span>
         </motion.h2>
 
-        {/* Tech Universe Animation */}
         <div className="relative w-full h-96 mx-auto my-16 lg:my-20 bg-gradient-to-br from-black via-gray-900 to-green-900/30 rounded-2xl overflow-hidden">
-          {/* Background elements */}
           <div className="absolute inset-0 opacity-10">
             <div className="grid grid-cols-8 grid-rows-8 h-full w-full">
               {Array.from({ length: 64 }).map((_, i) => (
@@ -342,7 +337,6 @@ export default function Skills() {
           </div>
         </div>
 
-        {/* Enhanced Skills Cards Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-5 text-lg font-bold mt-7 lg:mt-16 w-full place-items-center gap-y-6 lg:gap-y-12">
           {skills.map((skill, index) => (
             <motion.div
@@ -367,7 +361,6 @@ export default function Skills() {
               onMouseEnter={() => setHoveredSkill(skill.id)}
               onMouseLeave={() => setHoveredSkill(null)}
             >
-              {/* Background Glow Effect */}
               <motion.div
                 className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20"
                 style={{ backgroundColor: skill.color }}
@@ -376,7 +369,6 @@ export default function Skills() {
                 transition={{ duration: 0.3 }}
               />
               
-              {/* Floating Particles */}
               {hoveredSkill === skill.id && (
                 <>
                   <motion.div
@@ -402,7 +394,6 @@ export default function Skills() {
                 </>
               )}
 
-              {/* Icon with Color Animation */}
               <motion.div
                 style={{ color: hoveredSkill === skill.id ? skill.color : '#666' }}
                 animate={{
@@ -413,7 +404,6 @@ export default function Skills() {
                 {skill.icon}
               </motion.div>
 
-              {/* Skill Name */}
               <motion.p 
                 className="text-sm font-semibold"
                 style={{ color: hoveredSkill === skill.id ? skill.color : '#333' }}
@@ -421,7 +411,6 @@ export default function Skills() {
                 {skill.name}
               </motion.p>
 
-              {/* Progress Ring */}
               <motion.div
                 className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-1 rounded-full"
                 style={{ backgroundColor: skill.color }}
@@ -434,9 +423,7 @@ export default function Skills() {
         </div>
       </div>
 
-      {/* Updated Experience Section with Enhanced Animations */}
       <div className="bg-black w-full my-8 py-8 lg:my-16 lg:py-16 relative overflow-hidden">
-        {/* Background Animation */}
         <div className="absolute inset-0 opacity-10">
           {Array.from({ length: 20 }).map((_, i) => (
             <motion.div
@@ -490,7 +477,6 @@ export default function Skills() {
               }}
               viewport={{ once: true }}
             >
-              {/* Gradient Overlay */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100"
                 transition={{ duration: 0.3 }}
